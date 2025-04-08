@@ -1,6 +1,5 @@
 // Khởi tạo mảng lưu trữ lịch đặt
 let schedules = JSON.parse(localStorage.getItem('schedules')) || [];
-
 // Thêm dữ liệu mẫu nếu chưa có dữ liệu
 if (schedules.length === 0) {
     schedules = [
@@ -8,25 +7,44 @@ if (schedules.length === 0) {
             class: "gym",
             date: "2024-03-20",
             time: "06:00",
-            name: "Đặng Thanh Bình",
-            email: "binh2810@gmail.com"
+            name: "Nguyễn Văn A",
+            email: "nguyenvana@gmail.com"
         },
         {
             class: "yoga",
             date: "2024-03-21",
             time: "08:00",
-            name: "Nguyễn Văn A",
-            email: "vanA@gmail.com"
+            name: "Trần Thị B",
+            email: "tranthib@gmail.com"
         },
+        {
+            class: "zumba",
+            date: "2024-03-22",
+            time: "14:00",
+            name: "Lê Văn C",
+            email: "levanc@gmail.com"
+        },
+        {
+            class: "gym",
+            date: "2024-03-23",
+            time: "16:00",
+            name: "Phạm Thị D",
+            email: "phamthid@gmail.com"
+        },
+        {
+            class: "yoga",
+            date: "2024-03-24",
+            time: "18:00",
+            name: "Hoàng Văn E",
+            email: "hoangvane@gmail.com"
+        }
     ];
     localStorage.setItem('schedules', JSON.stringify(schedules));
 }
-
 // Hàm hiển thị danh sách lịch đặt
 function displaySchedules() {
     const tableBody = document.getElementById('scheduleTableBody');
     tableBody.innerHTML = '';
-
     schedules.forEach((schedule, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -43,13 +61,11 @@ function displaySchedules() {
         tableBody.appendChild(row);
     });
 }
-
 // Hàm format ngày tháng
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('vi-VN');
 }
-
 // Hàm hiển thị form đặt lịch
 function showBookingForm() {
     document.getElementById('bookingFormSection').style.display = 'block';
@@ -126,19 +142,30 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
             isValid = false;
         }
     }
-
     // Validate khung giờ
     if (!timeValue) {
         document.getElementById('timeError').textContent = 'Vui lòng chọn khung giờ';
         timeInput.classList.add('invalid');
         isValid = false;
     }
-
     // Validate họ tên
     if (!nameValue) {
         document.getElementById('nameError').textContent = 'Họ và tên không được để trống';
         nameInput.classList.add('invalid');
         isValid = false;
+    } else {
+        let hasNumber = false;
+        for (let i = 0; i < nameValue.length; i++) {
+            if (!isNaN(nameValue[i]) && nameValue[i] !== ' ') {
+                hasNumber = true;
+                break;
+            }
+        }
+        if (hasNumber) {
+            document.getElementById('nameError').textContent = 'Họ và tên không được chứa số';
+            nameInput.classList.add('invalid');
+            isValid = false;
+        }
     }
 
     // Validate email
@@ -196,47 +223,29 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
     }
 });
 
-Swal.fire({
-    title: "Bạn có muốn xoá không",
-    text: "bạn sẽ không thể hoàn tác",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Có, xóa nó"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Đã xóa",
-        text: "Dữ liệu của bạn đã được xóa.",
-        icon: "Thành công"
-      });
-    }
-  });
 // Hàm xóa lịch
 function deleteSchedule(index) {
     Swal.fire({
-      title: "Bạn có muốn xoá không?",
-      text: "Bạn sẽ không thể hủy bỏ!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Có, xóa nó"
+        title: "Bạn có muốn xoá không?",
+        text: "Bạn sẽ không thể hủy bỏ!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Có, xóa nó"
     }).then((result) => {
-      if (result.isConfirmed) {
-        schedules.splice(index, 1); 
-        localStorage.setItem('schedules', JSON.stringify(schedules)); 
-        displaySchedules(); 
-        Swal.fire({
-          title: "Đã xóa",
-          text: "Dữ liệu của bạn đã được xóa.",
-          icon: "success"
-        });
-      }
+        if (result.isConfirmed) {
+            schedules.splice(index, 1);
+            localStorage.setItem('schedules', JSON.stringify(schedules));
+            displaySchedules();
+            Swal.fire({
+                title: "Đã xóa",
+                text: "Dữ liệu của bạn đã được xóa.",
+                icon: "success"
+            });
+        }
     });
-  }
-  
+}
 
 // Hàm sửa lịch
 function editSchedule(index) {

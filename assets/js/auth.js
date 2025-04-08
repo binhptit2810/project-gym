@@ -54,7 +54,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             passwordInput.classList.add('invalid');
             return;
         }
-        
         // alert('Đăng nhập thành công!');
         window.location.href = '../../index.html';
     }
