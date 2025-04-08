@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            Admin Dashboard
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/assets/pages/booking/schedule.html">Quản lý lịch</a></li>
+            <li class="active"><a href="#">Quản lý dịch vụ</a></li>
+            <li><a href="/assets/index.html">Trang chủ</a></li>
+            <li><a href="/assets/pages/auth/login.html" class="logout">Đăng xuất</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h1>Quản lý Dịch vụ</h1>
+            <button class="add-service-btn">Thêm dịch vụ mới</button>
+        </div>
+
+        <table class="service-table">
+            <thead>
+                <tr>
+                    <th>Tên dịch vụ</th>
+                    <th>Mô tả</th>
+                    <th>Hình ảnh</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <script src="/assets/js/admin.js"></script>
+</body>
+</html>
