@@ -138,7 +138,6 @@ function displaySchedules() {
     // Cập nhật thống kê và biểu đồ
     updateStats();
 }
-
 // Hàm xóa lịch
 function deleteSchedule(index) {
     Swal.fire({

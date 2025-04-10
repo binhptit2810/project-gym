@@ -40,7 +40,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         }
         if (hasNumber) {
             document.getElementById('fullNameError').textContent = 'Họ và tên không được chứa số';
-            nameInput.classList.add('invalid');
+            fullNameInput.classList.add('invalid');
             isValid = false;
         }
     }
@@ -54,6 +54,14 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         document.getElementById('emailError').textContent = 'Email không hợp lệ';
         emailInput.classList.add('invalid');
         isValid = false;
+    } else {
+        // Kiểm tra email đã tồn tại chưa
+        let storedUser = localStorage.getItem('user_' + email);
+        if (storedUser) {
+            document.getElementById('emailError').textContent = 'Email đã tồn tại';
+            emailInput.classList.add('invalid');
+            isValid = false;
+        }
     }
 
     // Validate Mật khẩu
@@ -88,7 +96,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "Xin chào người dùng !!!",
+            title: "Chúc mừng bạn đã đăng kí thành công !!!",
             showConfirmButton: false,
             timer: 1500
         }).then(() => {

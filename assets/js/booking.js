@@ -5,38 +5,24 @@ if (schedules.length === 0) {
     schedules = [
         {
             class: "Gym",
-            date: "2024-03-20",
+            date: "2026-03-20",
             time: "06:00",
-            name: "Nguyễn Văn A",
-            email: "nguyenvana@gmail.com"
+            name: "Đặng Thanh Bình",
+            email: "binh2810@gmail.com"
         },
         {
             class: "Yoga",
-            date: "2024-03-21",
+            date: "2025-05-21",
             time: "08:00",
-            name: "Trần Thị B",
-            email: "tranthib@gmail.com"
+            name: "Ngô Trung Chiến",
+            email: "chienngo@gmail.com"
         },
         {
             class: "Zumba",
-            date: "2024-03-22",
+            date: "2025-07-12",
             time: "14:00",
-            name: "Lê Văn C",
-            email: "levanc@gmail.com"
-        },
-        {
-            class: "Gym",
-            date: "2024-03-23",
-            time: "16:00",
-            name: "Phạm Thị D",
-            email: "phamthid@gmail.com"
-        },
-        {
-            class: "Yoga",
-            date: "2024-03-24",
-            time: "18:00",
-            name: "Hoàng Văn E",
-            email: "hoangvane@gmail.com"
+            name: "Nguyễn Thị Quyên",
+            email: "quyenxiu@gmail.com"
         }
     ];
     localStorage.setItem('schedules', JSON.stringify(schedules));
@@ -45,7 +31,15 @@ if (schedules.length === 0) {
 function displaySchedules() {
     const tableBody = document.getElementById('scheduleTableBody');
     tableBody.innerHTML = '';
-    schedules.forEach((schedule, index) => {
+    
+    // Sắp xếp lịch theo ngày từ gần nhất đến muộn nhất
+    const sortedSchedules = [...schedules].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB;
+    });
+    
+    sortedSchedules.forEach((schedule, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${schedule.class}</td>
@@ -125,7 +119,6 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
         classInput.classList.add('invalid');
         isValid = false;
     }
-
     // Validate ngày tập
     if (!dateValue) {
         document.getElementById('dateError').textContent = 'Vui lòng chọn ngày tập';
