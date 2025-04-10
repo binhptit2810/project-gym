@@ -30,6 +30,19 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         document.getElementById('fullNameError').textContent = 'Họ và tên không được để trống';
         fullNameInput.classList.add('invalid');
         isValid = false;
+    } else {
+        let hasNumber = false;
+        for (let i = 0; i < fullName.length; i++) {
+            if (!isNaN(fullName[i]) && fullName[i] !== ' ') {
+                hasNumber = true;
+                break;
+            }
+        }
+        if (hasNumber) {
+            document.getElementById('fullNameError').textContent = 'Họ và tên không được chứa số';
+            nameInput.classList.add('invalid');
+            isValid = false;
+        }
     }
 
     // Validate Email
@@ -37,7 +50,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         document.getElementById('emailError').textContent = 'Email không được để trống';
         emailInput.classList.add('invalid');
         isValid = false;
-    } else if (!email.includes('@') || !email.includes('.')) {
+    } else if (!email.includes('@') || !email.includes('.') ) {
         document.getElementById('emailError').textContent = 'Email không hợp lệ';
         emailInput.classList.add('invalid');
         isValid = false;
@@ -70,7 +83,18 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         let userData = {email, password};
         localStorage.setItem('user_' + email, JSON.stringify(userData)); 
         console.log(userData)
-        // alert('Đăng ký thành công!');
-        window.location.href = '../../index.html';
+        
+        // sweet alert đăng nhập thành công người dùng
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Xin chào người dùng !!!",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            window.location.href = '../../index.html';
+        });
+        
     }
+    
 });

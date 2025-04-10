@@ -4,35 +4,35 @@ let schedules = JSON.parse(localStorage.getItem('schedules')) || [];
 if (schedules.length === 0) {
     schedules = [
         {
-            class: "gym",
+            class: "Gym",
             date: "2024-03-20",
             time: "06:00",
             name: "Nguyễn Văn A",
             email: "nguyenvana@gmail.com"
         },
         {
-            class: "yoga",
+            class: "Yoga",
             date: "2024-03-21",
             time: "08:00",
             name: "Trần Thị B",
             email: "tranthib@gmail.com"
         },
         {
-            class: "zumba",
+            class: "Zumba",
             date: "2024-03-22",
             time: "14:00",
             name: "Lê Văn C",
             email: "levanc@gmail.com"
         },
         {
-            class: "gym",
+            class: "Gym",
             date: "2024-03-23",
             time: "16:00",
             name: "Phạm Thị D",
             email: "phamthid@gmail.com"
         },
         {
-            class: "yoga",
+            class: "Yoga",
             date: "2024-03-24",
             time: "18:00",
             name: "Hoàng Văn E",

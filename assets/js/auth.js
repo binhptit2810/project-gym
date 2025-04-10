@@ -33,12 +33,21 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     }
     
     if (isValid) {
-        // Kiểm tra nếu là tài khoản admin
+        // kiểm tra tài khoản của admin
         if (email === 'admin@gmail.com' && password === 'admin1234') {
-            // alert('Đăng nhập thành công!');
-            window.location.href = '/assets/pages/admin/dashboard.html';
+            // sweet alert đăng nhập thành công admin
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Admin đăng nhập thành công !!!",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = '/assets/pages/admin/dashboard.html';
+            });
             return;
         }
+
 
         // Kiểm tra tài khoản user thường
         let storedUser = localStorage.getItem('user_' + email);
@@ -54,7 +63,16 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             passwordInput.classList.add('invalid');
             return;
         }
-        // alert('Đăng nhập thành công!');
-        window.location.href = '../../index.html';
+        // sweet alert đăng nhập thành công người dùng
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Người dùng đăng nhập thành công !!!",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            window.location.href = '../../index.html';
+        });
+        
     }
 });

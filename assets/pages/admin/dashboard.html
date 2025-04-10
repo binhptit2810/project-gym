@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="admin-container">
         <!-- Sidebar -->
@@ -41,7 +43,7 @@
                     <div class="stats-container">
                         <div class="stat-box">
                             <h3>Tổng số lịch Gym</h3>
-                            <div class="stat-number" id="gymCount">1</div>
+                            <div class="stat-number" id="gymCount">0</div>
                         </div>
                         <div class="stat-box">
                             <h3>Tổng số lịch Yoga</h3>
@@ -52,10 +54,11 @@
                             <div class="stat-number" id="zumbaCount">0</div>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="scheduleChart"></canvas>
-                    </div>
                 </section>
+                
+                <div class="chart-container" style="position: relative; height:300px; width:100%; margin: 20px 0;">
+                    <canvas id="myChart"></canvas>
+                </div>
 
                 <!-- Danh sách lịch -->
                 <section class="schedule-section">
@@ -95,8 +98,6 @@
                             </tbody>
                         </table>
                     </div>
-
-                    
                 </section>
             </div>
         </div>
@@ -106,4 +107,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/assets/js/admin.js"></script>
 </body>
+
 </html>
