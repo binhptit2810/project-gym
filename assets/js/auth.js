@@ -47,6 +47,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             });
             return;
         }
+        // else if(email === 'admin@gmail.com' && password !== 'admin1234'){
+        //     document.getElementById('loginPasswordError').textContent = 'Tài khoản admin sai'
+        // }
 
 
         // Kiểm tra tài khoản user thường
@@ -56,7 +59,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             emailInput.classList.add('invalid');
             return;
         }
-        
         let userData = JSON.parse(storedUser);
         if (userData.password !== password) {
             document.getElementById('loginPasswordError').textContent = 'Mật khẩu không đúng';

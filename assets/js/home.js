@@ -2,11 +2,10 @@
 function updateHomeServices() {
     // Lấy dữ liệu dịch vụ từ localStorage
     const services = JSON.parse(localStorage.getItem('services')) || [];
-    
+
     // Lấy container chứa các card dịch vụ
     const cardContainer = document.querySelector('.row');
     if (!cardContainer) return;
-
     // Xóa tất cả card hiện tại
     cardContainer.innerHTML = '';
 
